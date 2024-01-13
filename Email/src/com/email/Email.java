@@ -7,9 +7,11 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private int mailboxCapacity;
+    private int mailboxCapacity=500;
     private String alternateEmail;
-
+    private String email;
+    private String companyName=".funafux.com";
+    private int passwordLength=10;
     // Constructor to receive first and last name
     public Email(String firstName,String lastName){
         this.firstName=firstName;
@@ -17,6 +19,10 @@ public class Email {
         System.out.println("Email created "+this.firstName+" "+this.lastName);
         this.department=setDepartment();
         System.out.println("Department is "+this.department);
+        this.password=generateRandomPassword(passwordLength);
+        System.out.println("your password is "+this.password);
+        email=firstName.toLowerCase()+"."+lastName.toLowerCase()+"@"+this.department+companyName;
+        System.out.println(email);
     }
     // ask for the department
     private String setDepartment(){
@@ -47,8 +53,35 @@ private String generateRandomPassword(int length){
 }
     //set mailbox capacity
 
-    //set alternate email
+    public int getMailboxCapacity() {
+        return mailboxCapacity;
+    }
 
+    public void setMailboxCapacity(int mailboxCapacity) {
+        this.mailboxCapacity = mailboxCapacity;
+    }
+
+    public String getAlternateEmail() {
+        return alternateEmail;
+    }
+
+    public void setAlternateEmail(String alternateEmail) {
+        this.alternateEmail = alternateEmail;
+    }
+
+    public void changePassword(String password){
+        this.password=password;
+    }
+    public String getPassword(){
+        return password;
+    }
+
+    //set alternate email
+    public String showInfo(){
+        return "Display Name: "+firstName+" "+lastName+"\nCompany Email "+email+
+                "\nmailbox Capacity: "+mailboxCapacity+
+                "\nAlterName Email "+alternateEmail;
+    }
     //change the email
 
 
